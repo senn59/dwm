@@ -62,7 +62,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_primary, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *screencmd[] = {"scrot", "/home/senn/Pictures/screenshots/%D-%T-screenshot.jpg", "--silent", NULL};
+static const char *screencmd[] = {"scrot", "/home/senn/Pictures/screenshots/screenshot.jpg", "--silent", NULL};
 static const char *refbarcmd[] = { "/home/senn/refbar", NULL };
 
 /* multimedia keys */
