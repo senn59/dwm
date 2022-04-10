@@ -39,11 +39,14 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+ 	{ "[@]",      spiral },
+ 	{ "[\\]",      dwindle },
 };
 
 
@@ -80,18 +83,20 @@ static Key keys[] = {
 	{ MODKEY,		       	XK_d,      spawn,          {.v = dmenucmd } }, 	/* d [open Dmenu] */
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } }, 	/* ENTER [open terminal] */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },		/* b [toggle status bar] */
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },	/* j [cycle up  windows] */
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },	/* k [cycle down windows] */
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },	/* o [increase master] */
 	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },	/* SHIFT + o [decrease master] */
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },	/* h [increase window width] */
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },	/* l [decrease window width] */
 	{ MODKEY,                       XK_space,  zoom,           {0} }, 		/* SPACE [Make selected window the master] */
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,             		XK_q,      killclient,     {0} }, 		/* kill window */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },/*t [tiling layout] */
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },/*f [floating layout] */
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },/*m [monocle layout] */
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} },/*y [floating layout] */
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },/*u [monocle layout] */
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },/*r [fibonacci layout] */
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },/*shift+ r [dwindle layout] */
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -104,15 +109,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = gappx } },
 	{ MODKEY,			XK_Print,  spawn,	   {.v = screencmd } },
-	{ 0, XF86XK_AudioMute, 		spawn, 		{.v = mutecmd } },
-	{ 0, XF86XK_AudioLowerVolume, 	spawn, 		{.v = voldowncmd } },
-	{ 0, XF86XK_AudioRaiseVolume, 	spawn, 		{.v = volupcmd } },
-	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		{.v = brupcmd} },
-	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		{.v = brdowncmd} },
-	{ 0, XF86XK_AudioLowerVolume, 	spawn, 		{.v = refbarcmd} },
-	{ 0, XF86XK_AudioRaiseVolume, 	spawn, 		{.v = refbarcmd} },
-	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		{.v = refbarcmd} },
-	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		{.v = refbarcmd} },
+	{ 0, XF86XK_AudioMute, 			   spawn, 	   {.v = mutecmd } },
+	{ 0, XF86XK_AudioLowerVolume, 		   spawn, 	   {.v = voldowncmd } },
+	{ 0, XF86XK_AudioRaiseVolume, 		   spawn, 	   {.v = volupcmd } },
+	{ 0, XF86XK_MonBrightnessUp, 		   spawn, 	   {.v = brupcmd} },
+	{ 0, XF86XK_MonBrightnessDown, 		   spawn, 	   {.v = brdowncmd} },
+	{ 0, XF86XK_AudioLowerVolume, 		   spawn, 	   {.v = refbarcmd} },
+	{ 0, XF86XK_AudioRaiseVolume, 		   spawn, 	   {.v = refbarcmd} },
+	{ 0, XF86XK_MonBrightnessUp, 		   spawn, 	   {.v = refbarcmd} },
+	{ 0, XF86XK_MonBrightnessDown, 		   spawn, 	   {.v = refbarcmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
