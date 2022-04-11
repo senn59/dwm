@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "=(",  ":)","._.", "B)"};
+static const char *tags[] = { "=(", "._.", ":)", "[~.~]", "B)"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,7 +66,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_primary, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *screencmd[] = {"scrot", "/home/senn/Pictures/screenshots/screenshot.jpg", "--silent", NULL};
-static const char *refbarcmd[] = { "/home/senn/refbar", NULL };
+static const char *refbarcmd[] = { "refbar", NULL };
 
 /* multimedia keys */
 static const char *mutecmd[] = { "amixer", "-c", "1", "-q", "set", "Master", "toggle", NULL };
