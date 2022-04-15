@@ -6,12 +6,12 @@ static const unsigned int gappx     = 14;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=14", "fontawesome:size=14" };
-static const char dmenufont[]	    = "JetBrains Mono:size=14";
+static const char *fonts[]          = { "Fira Code:size=14", "fontawesome:size=14" };
+static const char dmenufont[]	    = "Fira Code:size=14";
 #include "/home/senn/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = { "=(", "._.", ":)", "[~.~]", "B)"};
+static const char *tags[] = { ">_", "._.", "{}", "><", "~_~"};
 
 static const Rule rules[] = {
 	/* xprop(1):
