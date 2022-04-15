@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -57,17 +56,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]  = { "st", NULL };
 static const char *screencmd[] = {"scrot", "/home/senn/pics/screens/screenshot.jpg", "--silent", NULL};
-static const char *refbarcmd[] = { "refbar", NULL };
-
-/* multimedia keys */
-static const char *mutecmd[] = { "amixer", "-c", "1", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-c", "1", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-c", "1", "-q", "set", "Master", "5%-", "unmute", NULL };
-/* static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL }; */
-
-/* brightness keys */
-static const char *brupcmd[] = { "sudo", "light", "-A", "10", NULL };
-static const char *brdowncmd[] = { "sudo", "light", "-U", "10", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument 		explanation*/
@@ -101,15 +89,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = gappx } },
 	{ MODKEY,			XK_Print,  spawn,	   {.v = screencmd } },
-	{ 0, XF86XK_AudioMute, 			   spawn, 	   {.v = mutecmd } },
-	{ 0, XF86XK_AudioLowerVolume, 		   spawn, 	   {.v = voldowncmd } },
-	{ 0, XF86XK_AudioRaiseVolume, 		   spawn, 	   {.v = volupcmd } },
-	{ 0, XF86XK_MonBrightnessUp, 		   spawn, 	   {.v = brupcmd} },
-	{ 0, XF86XK_MonBrightnessDown, 		   spawn, 	   {.v = brdowncmd} },
-	{ 0, XF86XK_AudioLowerVolume, 		   spawn, 	   {.v = refbarcmd} },
-	{ 0, XF86XK_AudioRaiseVolume, 		   spawn, 	   {.v = refbarcmd} },
-	{ 0, XF86XK_MonBrightnessUp, 		   spawn, 	   {.v = refbarcmd} },
-	{ 0, XF86XK_MonBrightnessDown, 		   spawn, 	   {.v = refbarcmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
