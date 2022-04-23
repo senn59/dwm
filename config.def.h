@@ -59,8 +59,8 @@ static const char *screencmd[] = {"scrot", "/home/senn/pics/screens/screenshot.j
 
 static Key keys[] = {
 	/* modifier                     key        function        argument 		explanation*/
-	{ MODKEY,		       	XK_d,      spawn,          {.v = dmenucmd } }, 	/* d [open Dmenu] */
-	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } }, 	/* ENTER [open terminal] */
+	{ MODKEY,		       			XK_d,      spawn,          {.v = dmenucmd } }, 	/* d [open Dmenu] */
+	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } }, 	/* ENTER [open terminal] */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },		/* b [toggle status bar] */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },	/* j [cycle up  windows] */
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },	/* k [cycle down windows] */
@@ -70,7 +70,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },	/* l [decrease window width] */
 	{ MODKEY,                       XK_space,  zoom,           {0} }, 		/* SPACE [Make selected window the master] */
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             		XK_q,      killclient,     {0} }, 		/* kill window */
+	{ MODKEY,             			XK_q,      killclient,     {0} }, 		/* kill window */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },/*t [tiling layout] */
 	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} },/*y [floating layout] */
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },/*u [monocle layout] */
@@ -88,7 +88,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +4 } },
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = gappx } },
-	{ MODKEY,			XK_Print,  spawn,	   {.v = screencmd } },
+	{ MODKEY,						XK_Print,  spawn,	   	   {.v = screencmd } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
